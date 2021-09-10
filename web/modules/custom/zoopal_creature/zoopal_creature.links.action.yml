@@ -1,0 +1,5 @@
+zoopal_creature.add_form:
+  route_name: entity.zoopal_creature.add_form
+  title: 'Add creature'
+  appears_on:
+    - entity.zoopal_creature.collection
