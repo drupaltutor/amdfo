@@ -52,10 +52,10 @@ use Drupal\zoopal_creature\ZoopalCreatureInterface;
  *   },
  *   links = {
  *     "add-form" = "/admin/zoopal/creatures/add",
- *     "canonical" = "/zoopal_creature/{zoopal_creature}",
- *     "edit-form" = "/admin/zoopal/creatures/{zoopal_creature}/edit",
- *     "delete-form" = "/admin/zoopal/creatures/{zoopal_creature}/delete",
- *     "collection" = "/admin/content/zoopal-creature"
+ *     "canonical" = "/creature/{zoopal_creature}",
+ *     "edit-form" = "/creature/{zoopal_creature}/edit",
+ *     "delete-form" = "/creature/{zoopal_creature}/delete",
+ *     "collection" = "/admin/zoopal/creatures"
  *   },
  *   field_ui_base_route = "entity.zoopal_creature.settings"
  * )
