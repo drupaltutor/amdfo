@@ -16,7 +16,7 @@ entity.zoopal_creature.delete_form:
   base_route: entity.zoopal_creature.canonical
   weight: 10
 entity.zoopal_creature.collection:
-  title: Creature
+  title: Creatures
   route_name: entity.zoopal_creature.collection
-  base_route: system.admin_content
+  base_route: entity.zoopal_creature.collection
   weight: 10
