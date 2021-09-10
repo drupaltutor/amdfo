@@ -1,0 +1,35 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Adds a birth date field to the zoopal_creature entity type.
+ */
+function zoopal_creature_update_9001(&$sandbox) {
+  $field_storage_definition = BaseFieldDefinition::create('datetime')
+    ->setRevisionable(TRUE)
+    ->setTranslatable(FALSE)
+    ->setLabel(t('Birth Date'))
+    ->setDescription(t('The birth date of the creature'))
+    ->setRequired(FALSE)
+    ->setCardinality(1)
+    ->setSetting('datetime_type', 'date')
+    ->setDisplayOptions('form', [
+      'type' => 'datetime_default',
+      'weight' => 1,
+    ])
+    ->setDisplayConfigurable('form', TRUE)
+    ->setDisplayOptions('view', [
+      'label' => 'inline',
+      'weight' => 1,
+      'settings' => [
+        'timezone_override' => '',
+        'format_type' =>  'short',
+      ],
+    ])
+    ->setDisplayConfigurable('view', TRUE);
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('birth_date', 'zoopal_creature', 'zoopal_creature', $field_storage_definition);
+
+}
