@@ -199,6 +199,24 @@ class ZoopalCreature extends RevisionableContentEntityBase implements ZoopalCrea
       ])
       ->setDisplayConfigurable('view', TRUE);
 
+    $fields['favorite_food'] = BaseFieldDefinition::create('string')
+      ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
+      ->setLabel(t('Favorite Food'))
+      ->setDescription(t('The favorite food of the creature entity.'))
+      ->setSetting('max_length', 255)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 2,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'inline',
+        'type' => 'string',
+        'weight' => 2,
+      ])
+      ->setDisplayConfigurable('view', TRUE);
+
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setRevisionable(TRUE)
       ->setLabel(t('Status'))

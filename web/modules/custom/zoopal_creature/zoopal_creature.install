@@ -33,3 +33,31 @@ function zoopal_creature_update_9001(&$sandbox) {
     ->installFieldStorageDefinition('birth_date', 'zoopal_creature', 'zoopal_creature', $field_storage_definition);
 
 }
+
+/**
+ * Adds a favorite food field to the zoopal_creature entity type.
+ */
+function zoopal_creature_update_9002(&$sandbox)
+{
+  $field_storage_definition =
+  BaseFieldDefinition::create('string')
+    ->setRevisionable(TRUE)
+    ->setTranslatable(TRUE)
+    ->setLabel(t('Favorite Food'))
+    ->setDescription(t('The favorite food of the creature entity.'))
+    ->setSetting('max_length', 255)
+    ->setDisplayOptions('form', [
+      'type' => 'string_textfield',
+      'weight' => 2,
+    ])
+    ->setDisplayConfigurable('form', TRUE)
+    ->setDisplayOptions('view', [
+      'label' => 'inline',
+      'type' => 'string',
+      'weight' => 2,
+    ])
+    ->setDisplayConfigurable('view', TRUE);
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('favorite_food', 'zoopal_creature', 'zoopal_creature', $field_storage_definition);
+}
