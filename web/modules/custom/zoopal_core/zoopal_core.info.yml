@@ -1,0 +1,6 @@
+name: ZooPal Core
+type: module
+description: ZooPal Core
+package: ZooPal
+core: 8.x
+core_version_requirement: ^8 || ^9
