@@ -17,7 +17,7 @@ interface ZoopalCreatureInterface extends ContentEntityInterface, EntityOwnerInt
    * @return string
    *   Title of the creature.
    */
-  public function getTitle();
+  public function getName();
 
   /**
    * Sets the creature title.
@@ -28,7 +28,7 @@ interface ZoopalCreatureInterface extends ContentEntityInterface, EntityOwnerInt
    * @return \Drupal\zoopal_creature\ZoopalCreatureInterface
    *   The called creature entity.
    */
-  public function setTitle($title);
+  public function setName($name);
 
   /**
    * Gets the creature creation timestamp.

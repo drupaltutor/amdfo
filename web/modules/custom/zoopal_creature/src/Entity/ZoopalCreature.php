@@ -42,7 +42,7 @@ use Drupal\zoopal_creature\ZoopalCreatureInterface;
  *     "id" = "id",
  *     "revision" = "revision_id",
  *     "langcode" = "langcode",
- *     "label" = "title",
+ *     "label" = "name",
  *     "uuid" = "uuid"
  *   },
  *   revision_metadata_keys = {
@@ -78,15 +78,15 @@ class ZoopalCreature extends RevisionableContentEntityBase implements ZoopalCrea
   /**
    * {@inheritdoc}
    */
-  public function getTitle() {
-    return $this->get('title')->value;
+  public function getName() {
+    return $this->get('name')->value;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setTitle($title) {
-    $this->set('title', $title);
+  public function setName($name) {
+    $this->set('name', $name);
     return $this;
   }
 
@@ -157,11 +157,11 @@ class ZoopalCreature extends RevisionableContentEntityBase implements ZoopalCrea
 
     $fields = parent::baseFieldDefinitions($entity_type);
 
-    $fields['title'] = BaseFieldDefinition::create('string')
+    $fields['name'] = BaseFieldDefinition::create('string')
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE)
-      ->setLabel(t('Title'))
-      ->setDescription(t('The title of the creature entity.'))
+      ->setLabel(t('Name'))
+      ->setDescription(t('The name of the creature entity.'))
       ->setRequired(TRUE)
       ->setSetting('max_length', 255)
       ->setDisplayOptions('form', [
