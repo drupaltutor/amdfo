@@ -36,6 +36,12 @@ class ZoopalCreatureSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('revision_default'),
     ];
 
+    $form['status_default'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Enable new creatures by default'),
+      '#default_value' => $config->get('status_default'),
+    ];
+
     $form['actions'] = [
       '#type' => 'actions',
     ];
@@ -54,6 +60,7 @@ class ZoopalCreatureSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('zoopal_creature.settings');
     $config->set('revision_default', $form_state->getValue('revision_default'))
+      ->set('status_default', $form_state->getValue('status_default'))
       ->save();
     $this->messenger()->addStatus($this->t('The configuration has been updated.'));
   }

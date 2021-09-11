@@ -5,3 +5,6 @@ zoopal_creature.settings:
     revision_default:
       type: boolean
       label: 'Create new revisions by default'
+    status_default:
+      type: boolean
+      label: 'Enable new creatures by default'

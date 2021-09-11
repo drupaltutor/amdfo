@@ -95,6 +95,19 @@ class ZoopalCreatureForm extends ContentEntityForm {
 
     $form['revision']['#default_value'] = $this->config->get('revision_default');
 
+    $form['publishing_information'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Publishing information'),
+      '#open' => FALSE,
+      '#group' => 'advanced',
+      '#weight' => 5,
+    ];
+    $form['status']['#group'] = 'publishing_information';
+
+    if ($this->getEntity()->isNew()) {
+      $form['status']['widget']['value']['#default_value'] = $this->config->get('status_default');
+    }
+
     return $form;
   }
 
