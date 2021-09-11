@@ -1,0 +1,6 @@
+name: ZooPal Location
+type: module
+description: Location handling for creatures
+package: ZooPal
+core: 8.x
+core_version_requirement: ^8 || ^9
