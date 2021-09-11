@@ -8,3 +8,27 @@
  * This file is no longer required in Drupal 8.
  * @see https://www.drupal.org/node/2217931
  */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function zoopal_geolocation_entity_base_field_info(EntityTypeInterface $entity_type)
+{
+  if ($entity_type->id() === 'zoopal_creature') {
+
+    $fields['zoopal_geolocation_id'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Geolocation ID'))
+      ->setCardinality(1)
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 11,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', FALSE);
+
+    return $fields;
+  }
+}
