@@ -1,5 +1,5 @@
 entity.zoopal_species.collection:
-  path: '/admin/structure/zoopal-species'
+  path: '/admin/zoopal/config/species'
   defaults:
     _entity_list: 'zoopal_species'
     _title: 'Species configuration'
@@ -7,7 +7,7 @@ entity.zoopal_species.collection:
     _permission: 'administer zoopal_species'
 
 entity.zoopal_species.add_form:
-  path: '/admin/structure/zoopal_species/add'
+  path: '/admin/zoopal/config/species/add'
   defaults:
     _entity_form: 'zoopal_species.add'
     _title: 'Add a species'
@@ -15,7 +15,7 @@ entity.zoopal_species.add_form:
     _permission: 'administer zoopal_species'
 
 entity.zoopal_species.edit_form:
-  path: '/admin/structure/zoopal-species/{zoopal_species}'
+  path: '/admin/zoopal/config/species/{zoopal_species}'
   defaults:
     _entity_form: 'zoopal_species.edit'
     _title: 'Edit a species'
@@ -23,7 +23,7 @@ entity.zoopal_species.edit_form:
     _permission: 'administer zoopal_species'
 
 entity.zoopal_species.delete_form:
-  path: '/admin/structure/zoopal-species/{zoopal_species}/delete'
+  path: '/admin/zoopal/config/species/{zoopal_species}/delete'
   defaults:
     _entity_form: 'zoopal_species.delete'
     _title: 'Delete a species'
