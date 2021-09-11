@@ -25,15 +25,6 @@ class ZoopalLocationHandler extends Plugin {
    *
    * @ingroup plugin_translatable
    */
-  public $title;
-
-  /**
-   * The description of the plugin.
-   *
-   * @var \Drupal\Core\Annotation\Translation
-   *
-   * @ingroup plugin_translatable
-   */
-  public $description;
+  public $label;
 
 }

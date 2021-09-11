@@ -2,6 +2,7 @@
 
 namespace Drupal\zoopal_location\Plugin\ZoopalLocationHandler;
 
+use Drupal\Core\Field\FieldItemInterface;
 use Drupal\zoopal_location\ZoopalLocationHandlerPluginBase;
 
 /**
@@ -9,10 +10,15 @@ use Drupal\zoopal_location\ZoopalLocationHandlerPluginBase;
  *
  * @ZoopalLocationHandler(
  *   id = "foo",
- *   label = @Translation("Foo"),
- *   description = @Translation("Foo description.")
+ *   label = @Translation("Foo")
  * )
  */
 class Foo extends ZoopalLocationHandlerPluginBase {
+
+  public function render(FieldItemInterface $item) {
+    return [
+      '#markup' => 'foo',
+    ];
+  }
 
 }

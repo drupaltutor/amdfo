@@ -8,3 +8,40 @@
  * This file is no longer required in Drupal 8.
  * @see https://www.drupal.org/node/2217931
  */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function zoopal_location_entity_base_field_info(EntityTypeInterface $entity_type)
+{
+  if ($entity_type->id() === 'zoopal_creature') {
+
+   $fields['zoopal_location_handler'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Location Handler'))
+      ->setCardinality(1)
+      ->setSetting('allowed_values_function', 'zoopal_location_plugin_allowed_values')
+      ->setDisplayOptions('form', [
+        'type' => 'options_select',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', FALSE);
+
+    return $fields;
+  }
+}
+
+function zoopal_location_plugin_allowed_values() {
+  $allowed_values = [];
+  /** @var ZoopalLocationPluginManager $location_plugin_manager */
+  $location_plugin_manager = \Drupal::service('plugin.manager.zoopal_location_handler');
+
+  $definitions = $location_plugin_manager->getDefinitions();
+  foreach ($definitions as $key => $plugin_info) {
+    $allowed_values[$key] = $plugin_info['label'];
+  }
+  return $allowed_values;
+}
