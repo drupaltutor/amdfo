@@ -12,4 +12,10 @@ interface GeolocationManagerInterface {
    */
   public function getPosition(string $geolocation_id);
 
+  /**
+   * @param string $geolocation_id
+   * @return bool
+   */
+  public function hasEscaped(string $geolocation_id);
+  
 }

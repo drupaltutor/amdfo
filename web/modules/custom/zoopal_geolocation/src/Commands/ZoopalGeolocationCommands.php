@@ -50,7 +50,16 @@ class ZoopalGeolocationCommands extends DrushCommands {
       ->execute();
     foreach ($results as $creature_id) {
       $creature = $creature_storage->load($creature_id);
-      $this->writeln($creature->label() . ': ' . $creature->get('zoopal_geolocation_id')->value);
+
+      $geolocation_id = $creature->get('zoopal_geolocation_id')->value;
+      if ($this->geolocationManager->hasEscaped($geolocation_id)) {
+        $creature->set('status', FALSE)
+          ->save();
+        $this->writeln(t('@label has escaped. Disabled their creature page.', [
+          '@label' => $creature->label(),
+        ]));
+      }
+
     }
   }
 
