@@ -26,11 +26,13 @@ class GeolocationManager {
     $this->httpClient = $http_client;
   }
 
-  /**
-   * Method description.
-   */
-  public function doSomething() {
-    // @DCG place your code here.
+  public function getPosition(string $geolocation_id)
+  {
+    return [
+      'lat' => 5.525 + (rand(-100, 100) * 0.0002),
+      'long' => -87.069 + (rand(-100, 100) * 0.0002),
+    ];
   }
+
 
 }
