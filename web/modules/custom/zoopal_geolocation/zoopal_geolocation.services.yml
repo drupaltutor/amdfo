@@ -1,0 +1,4 @@
+services:
+  zoopal_geolocation.manager:
+    class: Drupal\zoopal_geolocation\GeolocationManager
+    arguments: ['@http_client']
