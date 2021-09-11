@@ -1,0 +1,5 @@
+entity.zoopal_species.overview:
+  title: Specieses
+  parent: system.admin_structure
+  description: 'List of specieses to extend site functionality.'
+  route_name: entity.zoopal_species.collection

@@ -1,0 +1,5 @@
+entity.zoopal_species.add_form:
+  route_name: 'entity.zoopal_species.add_form'
+  title: 'Add species'
+  appears_on:
+    - entity.zoopal_species.collection
