@@ -43,6 +43,7 @@ use Drupal\zoopal_species\ZoopalSpeciesInterface;
  *     "id",
  *     "scientific_name",
  *     "common_names",
+ *     "natural_habitat",
  *     "description"
  *   }
  * )
@@ -69,6 +70,13 @@ class ZoopalSpecies extends ConfigEntityBase implements ZoopalSpeciesInterface {
    * @var array
    */
   protected $common_names;
+
+  /**
+   * The natural habitat of this species
+   *
+   * @var string
+   */
+  protected $natural_habitat;
 
   /**
    * The species status.

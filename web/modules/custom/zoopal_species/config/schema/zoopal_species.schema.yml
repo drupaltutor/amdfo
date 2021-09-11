@@ -14,6 +14,9 @@ zoopal_species.zoopal_species.*:
     description:
       type: text
       label: Description
+    natural_habitat:
+      type: text
+      label: Natural Habitat
     common_names:
       type: sequence
       label: Common Names

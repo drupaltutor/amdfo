@@ -52,6 +52,13 @@ class ZoopalSpeciesForm extends EntityForm {
       '#description' => $this->t('Common names of the species.'),
     ];
 
+    $form['natural_habitat'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Natural Habitat'),
+      '#default_value' => $this->entity->get('natural_habitat'),
+      '#description' => $this->t('Natural habitat of the species.'),
+    ];
+
     $form['description'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Description'),
