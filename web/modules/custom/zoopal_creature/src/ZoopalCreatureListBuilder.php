@@ -81,6 +81,7 @@ class ZoopalCreatureListBuilder extends EntityListBuilder {
   public function buildHeader() {
     $header['name'] = $this->t('Name');
     $header['birth_date'] = $this->t('Birth Date');
+    $header['favorite_food'] = $this->t('Favorite Food');
     $header['status'] = $this->t('Status');
     $header['uid'] = $this->t('Author');
     $header['created'] = $this->t('Created');
@@ -98,6 +99,11 @@ class ZoopalCreatureListBuilder extends EntityListBuilder {
       $row['birth_date'] = $entity->get('birth_date')->value;
     } else {
       $row['birth_date'] = $this->t('Unknown');
+    }
+    if (!$entity->get('favorite_food')->isEmpty()) {
+      $row['favorite_food'] = $entity->get('favorite_food')->value;
+    } else {
+      $row['favorite_food'] = $this->t('Unknown');
     }
     $row['status'] = $entity->isEnabled() ? $this->t('Enabled') : $this->t('Disabled');
     $row['uid']['data'] = [

@@ -19,7 +19,7 @@ class ZoopalCreatureAccessControlHandler extends EntityAccessControlHandler {
 
     switch ($operation) {
       case 'view':
-        if ($account->hasPermission('view unpublished creatures')) {
+        if ($account->hasPermission('view unpublished creatures') || $account->hasPermission('administer creature')) {
           return AccessResult::allowed();
         }
 
