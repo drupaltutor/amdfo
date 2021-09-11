@@ -7,7 +7,7 @@ use GuzzleHttp\ClientInterface;
 /**
  * GeolocationManager service.
  */
-class GeolocationManager {
+class GeolocationManager implements GeolocationManagerInterface {
 
   /**
    * The HTTP client.
