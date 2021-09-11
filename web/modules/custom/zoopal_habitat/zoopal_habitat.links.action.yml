@@ -1,0 +1,11 @@
+zoopal_habitat.type_add:
+  route_name: entity.zoopal_habitat_type.add_form
+  title: 'Add habitat type'
+  appears_on:
+    - entity.zoopal_habitat_type.collection
+
+zoopal_habitat.add_page:
+  route_name: entity.zoopal_habitat.add_page
+  title: 'Add habitat'
+  appears_on:
+    - entity.zoopal_habitat.collection
