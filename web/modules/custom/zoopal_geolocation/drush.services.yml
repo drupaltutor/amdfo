@@ -1,0 +1,5 @@
+services:
+  zoopal_geolocation.commands:
+    class: \Drupal\zoopal_geolocation\Commands\ZoopalGeolocationCommands
+    tags:
+      - { name: drush.command }
