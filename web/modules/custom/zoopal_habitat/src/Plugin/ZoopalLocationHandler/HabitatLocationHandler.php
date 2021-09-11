@@ -60,4 +60,17 @@ class HabitatLocationHandler extends ZoopalLocationHandlerPluginBase implements 
     }
     return [];
   }
+
+  public function creatureFormAlter(array &$form, FormStateInterface $form_state)
+  {
+    $form['zoopal_habitat']['widget'][0]['target_id']['#states'] = [
+      'visible' => [
+        ':input[name="zoopal_location_handler"]' => ['value' => 'zoopal_habitat'],
+      ],
+      'required' => [
+        ':input[name="zoopal_location_handler"]' => ['value' => 'zoopal_habitat'],
+      ],
+    ];
+  }
+
 }
