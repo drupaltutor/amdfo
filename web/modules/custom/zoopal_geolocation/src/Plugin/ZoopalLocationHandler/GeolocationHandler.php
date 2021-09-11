@@ -79,4 +79,16 @@ class GeoLocationHandler extends ZoopalLocationHandlerPluginBase implements Cont
     $cache->applyTo($build);
     return $build;
   }
+
+  public function creatureFormAlter(array &$form, FormStateInterface $form_state)
+  {
+    $form['zoopal_geolocation_id']['widget'][0]['value']['#states'] = [
+      'visible' => [
+        ':input[name="zoopal_location_handler"]' => ['value' => 'zoopal_geolocation'],
+      ],
+      'required' => [
+        ':input[name="zoopal_location_handler"]' => ['value' => 'zoopal_geolocation'],
+      ],
+    ];
+  }
 }
