@@ -30,10 +30,10 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "add-form" = "/admin/structure/zoopal_habitat_types/add",
- *     "edit-form" = "/admin/structure/zoopal_habitat_types/manage/{zoopal_habitat_type}",
- *     "delete-form" = "/admin/structure/zoopal_habitat_types/manage/{zoopal_habitat_type}/delete",
- *     "collection" = "/admin/structure/zoopal_habitat_types"
+ *     "add-form" = "/admin/zoopal/config/habitat_types/add",
+ *     "edit-form" = "/admin/zoopal/config/habitat_types/manage/{zoopal_habitat_type}",
+ *     "delete-form" = "/admin/zoopal/config/habitat_types/manage/{zoopal_habitat_type}/delete",
+ *     "collection" = "/admin/zoopal/config/habitat_types"
  *   },
  *   config_export = {
  *     "id",

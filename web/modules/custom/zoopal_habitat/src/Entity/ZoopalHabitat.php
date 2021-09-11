@@ -55,10 +55,10 @@ use Drupal\zoopal_habitat\ZoopalHabitatInterface;
  *   links = {
  *     "add-form" = "/admin/zoopal/habitats/add/{zoopal_habitat_type}",
  *     "add-page" = "/admin/zoopal/habitats/add",
- *     "canonical" = "/zoopal_habitat/{zoopal_habitat}",
+ *     "canonical" = "/habitat/{zoopal_habitat}",
  *     "edit-form" = "/admin/zoopal/habitats/{zoopal_habitat}/edit",
  *     "delete-form" = "/admin/zoopal/habitats/{zoopal_habitat}/delete",
- *     "collection" = "/admin/content/zoopal-habitat"
+ *     "collection" = "/admin/zoopal/habitats"
  *   },
  *   bundle_entity_type = "zoopal_habitat_type",
  *   field_ui_base_route = "entity.zoopal_habitat_type.edit_form"

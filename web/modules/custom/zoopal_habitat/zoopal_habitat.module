@@ -5,6 +5,8 @@
  * Provides a habitat entity type.
  */
 
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Render\Element;
 
 /**
@@ -32,5 +34,27 @@ function zoopal_habitat_theme() {
 function template_preprocess_zoopal_habitat(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function zoopal_habitat_entity_base_field_info(EntityTypeInterface $entity_type)
+{
+  if ($entity_type->id() === 'zoopal_creature') {
+
+    $fields['zoopal_habitat'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Habitat'))
+      ->setCardinality(1)
+      ->setSetting('target_type', 'zoopal_habitat')
+      ->setDisplayOptions('form', [
+        'type' => 'entity_reference_autocomplete',
+        'weight' => 11,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', FALSE);
+
+    return $fields;
   }
 }

@@ -14,7 +14,7 @@ entity.zoopal_habitat.delete_form:
 entity.zoopal_habitat.collection:
   title: Habitat
   route_name: entity.zoopal_habitat.collection
-  base_route: system.admin_content
+  base_route: entity.zoopal_creature.collection
   weight: 10
 entity.zoopal_habitat_type.edit_form:
   title: Edit
