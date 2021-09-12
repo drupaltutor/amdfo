@@ -44,8 +44,8 @@ class ConfigEventSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     return [
-      ConfigEvents::SAVE => ['configUpdated'],
-      ConfigEvents::DELETE => ['configUpdated'],
+      ConfigEvents::SAVE => ['configUpdated', -100],
+      ConfigEvents::DELETE => ['configUpdated', -100],
     ];
   }
 
