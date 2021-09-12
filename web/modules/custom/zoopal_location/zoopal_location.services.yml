@@ -1,0 +1,4 @@
+services:
+  plugin.manager.zoopal_location_handler:
+    class: Drupal\zoopal_location\ZoopalLocationHandlerPluginManager
+    parent: default_plugin_manager
