@@ -1,0 +1,6 @@
+services:
+  zoopal_core.event_subscriber:
+    class: Drupal\zoopal_core\EventSubscriber\ConfigEventSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }
