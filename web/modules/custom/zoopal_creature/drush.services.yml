@@ -1,0 +1,6 @@
+services:
+  zoopal_creature.commands:
+    class: \Drupal\zoopal_creature\Commands\ZoopalCreatureCommands
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: drush.command }
