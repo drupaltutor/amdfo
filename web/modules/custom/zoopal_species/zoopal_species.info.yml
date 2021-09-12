@@ -1,0 +1,7 @@
+name: ZooPal Species
+type: module
+description: 'Provides a species configuration entity.'
+package: Species
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: entity.zoopal_species.collection

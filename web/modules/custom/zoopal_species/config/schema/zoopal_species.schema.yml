@@ -1,0 +1,22 @@
+zoopal_species.zoopal_species.*:
+  type: config_entity
+  label: Species
+  mapping:
+    id:
+      type: string
+      label: ID
+    scientific_name:
+      type: label
+      label: Scientific Name
+    uuid:
+      type: string
+      label: UUID
+    description:
+      type: text
+      label: Description
+    common_names:
+      type: sequence
+      label: Common Names
+      sequence:
+        type: label
+        label: Common Name
