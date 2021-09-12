@@ -8,6 +8,7 @@ use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Routing\RedirectDestinationInterface;
+use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -78,8 +79,8 @@ class ZoopalCreatureListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildHeader() {
-    $header['id'] = $this->t('ID');
-    $header['title'] = $this->t('Title');
+    $header['name'] = $this->t('Name');
+    $header['birth_date'] = $this->t('Birth Date');
     $header['status'] = $this->t('Status');
     $header['uid'] = $this->t('Author');
     $header['created'] = $this->t('Created');
@@ -92,8 +93,12 @@ class ZoopalCreatureListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     /* @var $entity \Drupal\zoopal_creature\ZoopalCreatureInterface */
-    $row['id'] = $entity->id();
-    $row['title'] = $entity->toLink();
+    $row['name'] = $entity->toLink();
+    if (!$entity->get('birth_date')->isEmpty()) {
+      $row['birth_date'] = $entity->get('birth_date')->value;
+    } else {
+      $row['birth_date'] = $this->t('Unknown');
+    }
     $row['status'] = $entity->isEnabled() ? $this->t('Enabled') : $this->t('Disabled');
     $row['uid']['data'] = [
       '#theme' => 'username',
@@ -109,6 +114,11 @@ class ZoopalCreatureListBuilder extends EntityListBuilder {
    */
   protected function getDefaultOperations(EntityInterface $entity) {
     $operations = parent::getDefaultOperations($entity);
+    $operations['view'] = [
+      'title' => $this->t('View'),
+      'weight' => 1,
+      'url' => Url::fromRoute('entity.zoopal_creature.canonical', ['zoopal_creature' => $entity->id()]),
+    ];
     $destination = $this->redirectDestination->getAsArray();
     foreach ($operations as $key => $operation) {
       $operations[$key]['query'] = $destination;
