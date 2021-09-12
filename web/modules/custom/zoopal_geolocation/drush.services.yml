@@ -1,0 +1,6 @@
+services:
+  zoopal_geolocation.commands:
+    class: \Drupal\zoopal_geolocation\Commands\ZoopalGeolocationCommands
+    arguments: ['@entity_type.manager', '@zoopal_geolocation.manager']
+    tags:
+      - { name: drush.command }
