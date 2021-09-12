@@ -2,16 +2,18 @@
 
 namespace Drupal\zoopal_core\EventSubscriber;
 
+use Drupal\Core\Config\ConfigCrudEvent;
+use Drupal\Core\Config\ConfigEvents;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * ZooPal Core event subscriber.
  */
 class ConfigEventSubscriber implements EventSubscriberInterface {
+
+  use StringTranslationTrait;
 
   /**
    * The messenger.
@@ -30,24 +32,11 @@ class ConfigEventSubscriber implements EventSubscriberInterface {
     $this->messenger = $messenger;
   }
 
-  /**
-   * Kernel request event handler.
-   *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
-   *   Response event.
-   */
-  public function onKernelRequest(GetResponseEvent $event) {
-    $this->messenger->addStatus(__FUNCTION__);
-  }
-
-  /**
-   * Kernel response event handler.
-   *
-   * @param \Symfony\Component\HttpKernel\Event\FilterResponseEvent $event
-   *   Response event.
-   */
-  public function onKernelResponse(FilterResponseEvent $event) {
-    $this->messenger->addStatus(__FUNCTION__);
+  public function configUpdated(ConfigCrudEvent $event) {
+    $this->messenger->addWarning($this->t('You have updated the website configuration setting: @name.
+      Be sure to capture this update with a config export.', [
+      '@name' => $event->getConfig()->getName(),
+    ]));
   }
 
   /**
@@ -55,8 +44,8 @@ class ConfigEventSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     return [
-      KernelEvents::REQUEST => ['onKernelRequest'],
-      KernelEvents::RESPONSE => ['onKernelResponse'],
+      ConfigEvents::SAVE => ['configUpdated'],
+      ConfigEvents::DELETE => ['configUpdated'],
     ];
   }
 
