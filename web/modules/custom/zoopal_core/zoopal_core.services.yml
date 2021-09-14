@@ -4,3 +4,12 @@ services:
     arguments: ['@messenger']
     tags:
       - { name: event_subscriber }
+#  messenger:
+#    class: Drupal\zoopal_core\BackwardsMessenger
+#    arguments: ['@session.flash_bag', '@page_cache_kill_switch']
+  zoopal_core.messenger_decorator:
+    class: Drupal\zoopal_core\BackwardsMessengerDecorator
+    public: false
+    decorates: messenger
+    decoration_priority: 10
+    arguments: ['@zoopal_core.messenger_decorator.inner']
