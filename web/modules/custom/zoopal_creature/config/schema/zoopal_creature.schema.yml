@@ -5,3 +5,14 @@ zoopal_creature.settings:
     revision_default:
       type: boolean
       label: 'Create new revisions by default'
+
+field.value.zoopal_creature_timeline:
+  type: mapping
+  label: Default value
+  mapping:
+    date:
+      type: string
+      label: Date
+    description:
+      type: text
+      label: Description
