@@ -1,0 +1,24 @@
+<?php
+
+use Drupal\Core\Url;
+
+/**
+ * @file
+ * Primary module hooks for ZooPal Alerts module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+ /**
+  * Implements hook_mail().
+  */
+function zoopal_alerts_mail($key, &$message, $params) {
+  if ($key === 'creature_escaped') {
+    $message['subject'] = t('@creature has escaped!', [
+      '@creature' => $params['creature']->label(),
+    ]);
+    $message['body'][] = t('Please see creature page for last known location.');
+  }
+}

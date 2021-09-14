@@ -2,10 +2,12 @@
 
 namespace Drupal\zoopal_geolocation\Commands;
 
-use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\zoopal_alerts\Event\AlertEvents;
+use Drupal\zoopal_alerts\Event\CreatureAlertEvent;
 use Drupal\zoopal_geolocation\GeolocationManagerInterface;
 use Drush\Commands\DrushCommands;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
  * A Drush commandfile.
@@ -30,10 +32,15 @@ class ZoopalGeolocationCommands extends DrushCommands {
    */
   protected $geolocationManager;
 
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, GeolocationManagerInterface $geolocationManager)
-  {
+  /**
+   * @var EventDispatcherInterface
+   */
+  protected $eventDispatcher;
+
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, GeolocationManagerInterface $geolocationManager, EventDispatcherInterface $eventDispatcher) {
     $this->entityTypeManager = $entityTypeManager;
     $this->geolocationManager = $geolocationManager;
+    $this->eventDispatcher = $eventDispatcher;
   }
 
   /**
@@ -53,6 +60,7 @@ class ZoopalGeolocationCommands extends DrushCommands {
 
       $geolocation_id = $creature->get('zoopal_geolocation_id')->value;
       if ($this->geolocationManager->hasEscaped($geolocation_id)) {
+        $this->eventDispatcher->dispatch(new CreatureAlertEvent($creature), AlertEvents::CREATURE_ESCAPED);
         $creature->set('status', FALSE)
           ->save();
         $this->writeln(t('@label has escaped. Disabled their creature page.', [

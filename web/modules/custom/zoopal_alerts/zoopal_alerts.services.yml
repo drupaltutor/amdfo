@@ -1,0 +1,6 @@
+services:
+  zoopal_alerts.event_subscriber:
+    class: Drupal\zoopal_alerts\EventSubscriber\ZoopalAlertsSubscriber
+    arguments: ['@plugin.manager.mail']
+    tags:
+      - { name: event_subscriber }
