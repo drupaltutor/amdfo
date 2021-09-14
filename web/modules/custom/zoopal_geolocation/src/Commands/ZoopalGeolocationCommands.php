@@ -46,10 +46,10 @@ class ZoopalGeolocationCommands extends DrushCommands {
   /**
    * Unpublishes creatures that have escaped
    *
-   * @command zoopal:unpublish_escaped
+   * @command zoopal:check_escaped
    * @aliases yikes
    */
-  public function unpublishEscapedCreatures() {
+  public function checkEscapedCreatures() {
     $creature_storage = $this->entityTypeManager->getStorage('zoopal_creature');
     $results = $creature_storage->getQuery()
       ->condition('status', TRUE)
@@ -61,9 +61,7 @@ class ZoopalGeolocationCommands extends DrushCommands {
       $geolocation_id = $creature->get('zoopal_geolocation_id')->value;
       if ($this->geolocationManager->hasEscaped($geolocation_id)) {
         $this->eventDispatcher->dispatch(new CreatureAlertEvent($creature), AlertEvents::CREATURE_ESCAPED);
-        $creature->set('status', FALSE)
-          ->save();
-        $this->writeln(t('@label has escaped. Disabled their creature page.', [
+        $this->writeln(t('@label has escaped.', [
           '@label' => $creature->label(),
         ]));
       }

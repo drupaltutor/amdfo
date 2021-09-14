@@ -3,3 +3,8 @@ services:
     class: Drupal\zoopal_geolocation\GeolocationManager
     arguments: ['@http_client']
 
+
+  zoopal_geolocation.event_subscriber:
+    class: Drupal\zoopal_geolocation\EventSubscriber\ZoopalGeolocationSubscriber
+    tags:
+      - { name: event_subscriber }
