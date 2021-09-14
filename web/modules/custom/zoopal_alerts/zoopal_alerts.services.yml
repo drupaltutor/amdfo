@@ -4,3 +4,9 @@ services:
     arguments: ['@plugin.manager.mail']
     tags:
       - { name: event_subscriber }
+  zoopal_alerts.mail_manager_decorator:
+    class: Drupal\zoopal_alerts\LoggingMailManager
+    public: false
+    decorates: plugin.manager.mail
+    decoration_priority: 10
+    arguments: ['@zoopal_alerts.mail_manager_decorator.inner', '@logger.factory']
