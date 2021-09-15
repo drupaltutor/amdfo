@@ -1,0 +1,10 @@
+field.value.zoopal_core_faq:
+  type: mapping
+  label: Default value
+  mapping:
+    question:
+      type: label
+      label: Question
+    answer:
+      type: label
+      label: Answer
