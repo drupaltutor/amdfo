@@ -58,6 +58,9 @@ use Drupal\zoopal_creature\ZoopalCreatureInterface;
  *     "collection" = "/admin/zoopal/creatures"
  *   },
  *   field_ui_base_route = "entity.zoopal_creature.settings",
+ *   constraints = {
+ *     "ZoopalCreatureAuthorAndCreatureNameAlliteration" = {}
+ *   }
  * )
  */
 class ZoopalCreature extends RevisionableContentEntityBase implements ZoopalCreatureInterface {
