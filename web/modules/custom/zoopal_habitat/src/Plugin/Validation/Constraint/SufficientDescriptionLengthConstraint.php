@@ -18,6 +18,8 @@ use Symfony\Component\Validator\Constraint;
  */
 class SufficientDescriptionLengthConstraint extends Constraint {
 
+  public $min_chars = 400;
+
   public $errorMessage = 'This field is not long enough. Add more characters.';
 
 }

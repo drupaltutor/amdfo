@@ -17,7 +17,7 @@ class SufficientDescriptionLengthConstraintValidator extends ConstraintValidator
 
     foreach ($items as $delta => $item) {
       // @DCG Validate the item here.
-      if (mb_strlen(strip_tags($item->value)) < 400) {
+      if (mb_strlen(strip_tags($item->value)) < $constraint->min_chars) {
         $this->context->buildViolation($constraint->errorMessage)
           ->atPath($delta)
           ->addViolation();
