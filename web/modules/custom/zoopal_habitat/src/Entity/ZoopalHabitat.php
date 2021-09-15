@@ -219,7 +219,8 @@ class ZoopalHabitat extends RevisionableContentEntityBase implements ZoopalHabit
         'label' => 'above',
         'weight' => 10,
       ])
-      ->setDisplayConfigurable('view', TRUE);
+      ->setDisplayConfigurable('view', TRUE)
+      ->addConstraint('ZoopalHabitatSufficientDescriptionLength', []);
 
     $fields['uid'] = BaseFieldDefinition::create('entity_reference')
       ->setRevisionable(TRUE)
