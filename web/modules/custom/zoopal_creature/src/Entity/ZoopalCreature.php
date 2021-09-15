@@ -57,7 +57,10 @@ use Drupal\zoopal_creature\ZoopalCreatureInterface;
  *     "delete-form" = "/creature/{zoopal_creature}/delete",
  *     "collection" = "/admin/zoopal/creatures"
  *   },
- *   field_ui_base_route = "entity.zoopal_creature.settings"
+ *   field_ui_base_route = "entity.zoopal_creature.settings",
+ *   constraints = {
+ *     "ZoopalCreatureAuthorAndCreatureNameAlliteration" = {}
+ *   }
  * )
  */
 class ZoopalCreature extends RevisionableContentEntityBase implements ZoopalCreatureInterface {
@@ -174,7 +177,8 @@ class ZoopalCreature extends RevisionableContentEntityBase implements ZoopalCrea
         'type' => 'string',
         'weight' => -5,
       ])
-      ->setDisplayConfigurable('view', TRUE);
+      ->setDisplayConfigurable('view', TRUE)
+      ->addConstraint('ZoopalCreatureAlliterativeString', []);
 
     $fields['birth_date'] = BaseFieldDefinition::create('datetime')
       ->setRevisionable(TRUE)
